@@ -9,7 +9,7 @@ import {useContext} from "react";
 const Loginform = () => {
     return (  
 
-        <div><h1>Piv</h1></div>
+        <div><h1>Dobbelt Piv</h1></div>
     );
 }
  
