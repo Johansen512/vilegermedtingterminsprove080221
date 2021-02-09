@@ -13,22 +13,26 @@ const Home = () => {
     data && console.log("from context:", data.results[0].name);
 
 
+const Homestyling = css`
 
+border: solid red 4px;
+
+`;
 
 
 
 return (
     
-    <>
-
+    
+<div css={Homestyling}>
     <h1>HAllo</h1>
 
     {data && data.results.map (planet => <li>{ planet.name }</li>)}
 
     <p>Truttruuut</p>
 
-
-    </>
+    </div>
+  
 )
 
 
