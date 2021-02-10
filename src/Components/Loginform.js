@@ -9,14 +9,25 @@ import { useForm } from "react-hook-form";
 
 const Loginform = () => {
 
+  const {checkedEmail}=useContext(dataContext);
+  const {checkedPassword}=useContext(dataContext);
+
+  console.log ("from context:", checkedEmail, checkedPassword );
+  
+
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = data => {console.log (data.email, data.password)}
+  const onSubmit = data => {console.log (data.email, data.password)
+  
+    localStorage.setItem('myEmailinLocalStorage', data.email)
+    localStorage.setItem('myPasswordinLocalStorage', data.password);
+  
+  }
 
 const sectionstyle= css`
 display: flex;
 flex-direction: column;
-border: solid 5px yellow;
+max-width: 30rem;
 
 `;
 
@@ -26,13 +37,12 @@ border: solid 5px yellow;
     return (  
 
         <section >
+          <h2>TILMELD: Indtast e-mail og password</h2>
         <form css={sectionstyle} onSubmit={handleSubmit(onSubmit)}>
-        
-        <label for="number">Indtast e-mail og password</label>
           
-         
-         
-          <input type='e-mail' name="email"  ref={register({ required: true })} />
+        <label for="email">E-mail</label>
+          <input type='email' name="email"  ref={register({ required: true })} />
+          <label for="passsword">Password</label>
           <input type='password' name="password"  ref={register({ required: true })} />
         
           
@@ -40,7 +50,7 @@ border: solid 5px yellow;
           
           {errors.exampleRequired && <span>This field is required</span>}
           
-          <input type="submit" />
+          <input type="submit" value="Tilmeld"/>
         </form>
     
     </section>
