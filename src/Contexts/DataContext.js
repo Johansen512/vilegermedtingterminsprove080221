@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-
+import { navigate } from "@reach/router";
 export const dataContext = createContext();
 
 
@@ -9,18 +9,11 @@ const DataContextProvider = (props) => {
     const [checkedEmail,setCheckedEmail]=useState(null)
     const [checkedPassword,setCheckedPassword]=useState(null)
 
-    useEffect(() => {
-        fetch("https://swapi.dev/api/planets/")
-        .then (response => response.json())
-        .then (result => setData(result))
-    }, []);
-    
-    
-    data && console.log(data.results)
 
-    //check localstorage
 
-    useEffect(()=>{
+     //check localstorage
+
+     useEffect(()=>{
 
         let storedEmail = localStorage.getItem('myEmailinLocalStorage');
         let storedPassword = localStorage.getItem('myPasswordinLocalStorage');
@@ -31,9 +24,36 @@ const DataContextProvider = (props) => {
       data && console.log ("from local:", checkedEmail, checkedPassword );
 
 
-        //-> setFutureDate,setTextstring
+        
     
-      }, [data, checkedEmail, checkedPassword, setCheckedEmail, setCheckedPassword])
+      }, [data, checkedEmail, checkedPassword, setCheckedEmail, setCheckedPassword]);
+
+      //checker om der er logget ind-->
+
+    useEffect (() => {
+checkedPassword && checkedEmail ? console.log ("Halløj der!") : navigate("/Loginform")
+
+/*fetch("https://swapi.dev/api/planets/")
+.then (response => response.json())
+.then (result => setData(result)) */
+
+
+
+
+
+        }, [checkedPassword, checkedEmail]); 
+
+  useEffect (() => {fetch("https://swapi.dev/api/planets/")
+.then (response => response.json())
+.then (result => setData(result)) 
+
+    }, []);
+        
+    
+    
+    data && console.log(data.results)
+
+   
 
 
 
