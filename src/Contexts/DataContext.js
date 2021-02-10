@@ -28,10 +28,20 @@ const DataContextProvider = (props) => {
     
       }, [data, checkedEmail, checkedPassword, setCheckedEmail, setCheckedPassword]);
 
+      useEffect (() => {fetch("https://swapi.dev/api/planets/")
+      .then (response => response.json())
+      .then (result => setData(result)) 
+      
+          }, []);
+              
+          
+          
+          data && console.log(data.results)
+
       //checker om der er logget ind-->
 
     useEffect (() => {
-checkedPassword && checkedEmail ? console.log ("Halløj der!") : navigate("/Loginform")
+checkedPassword ? navigate("/") : navigate("/Loginform")
 
 /*fetch("https://swapi.dev/api/planets/")
 .then (response => response.json())
@@ -43,15 +53,7 @@ checkedPassword && checkedEmail ? console.log ("Halløj der!") : navigate("/Logi
 
         }, [checkedPassword, checkedEmail]); 
 
-  useEffect (() => {fetch("https://swapi.dev/api/planets/")
-.then (response => response.json())
-.then (result => setData(result)) 
 
-    }, []);
-        
-    
-    
-    data && console.log(data.results)
 
    
 
