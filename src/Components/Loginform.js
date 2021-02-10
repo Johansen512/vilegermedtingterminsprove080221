@@ -13,14 +13,20 @@ const Loginform = () => {
 
   const onSubmit = data => {console.log (data.email, data.password)}
 
+const sectionstyle= css`
+display: flex;
+flex-direction: column;
+border: solid 5px yellow;
+
+`;
 
     
 
 
     return (  
 
-        <section>
-        <form  onSubmit={handleSubmit(onSubmit)}>
+        <section >
+        <form css={sectionstyle} onSubmit={handleSubmit(onSubmit)}>
         
         <label for="number">Indtast e-mail og password</label>
           

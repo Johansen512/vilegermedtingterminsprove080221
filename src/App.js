@@ -1,6 +1,7 @@
 import './App.css';
 import Home from './Components/Home';
-import Loginform from './Components/Loginform'
+import Loginform from './Components/Loginform';
+import Navibar from './Components/Navibar';
 import DataContextProvider from './Contexts/DataContext';
 import React from 'react';
 import { Router } from '@reach/router';
@@ -9,7 +10,10 @@ function App() {
   return (
 
     <DataContextProvider>
-<div className="App-header">
+
+      <header className="App-header"><Navibar /></header>
+<div >
+
       <Router >
     
      
