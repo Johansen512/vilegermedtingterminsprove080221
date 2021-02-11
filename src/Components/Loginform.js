@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { dataContext } from "../Contexts/DataContext";
 import {useContext, useState} from "react";
 import { useForm } from "react-hook-form";
+import { navigate } from "@reach/router";
 
 
 
@@ -21,6 +22,7 @@ const Loginform = () => {
   
     localStorage.setItem('myEmailinLocalStorage', data.email)
     localStorage.setItem('myPasswordinLocalStorage', data.password);
+    navigate("/");
   
   }
 
