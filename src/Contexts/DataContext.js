@@ -30,7 +30,7 @@ const DataContextProvider = (props) => {
     
       }, [data, checkedEmail, checkedPassword, setCheckedEmail, setCheckedPassword, byemessage, setByemessage]);
 
-      useEffect (() => {fetch("https://the-one-api.dev/v2/character", {
+      useEffect (() => {fetch("https://the-one-api.dev/v2/character?limit=10", {
 Method: "GET",
 headers: { "Authorization": "Bearer fz0iWXirFJgLJUvlelqb" }
 
