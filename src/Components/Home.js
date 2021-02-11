@@ -1,16 +1,25 @@
 /**@jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { dataContext } from "../Contexts/DataContext";
-import {useContext} from "react";
+import Logoutbutton from '../Components/Logoutbutton';
+import Loginbutton from '../Components/Loginbutton';
+import {useContext, useEffect, useState} from "react";
 
 
 
 const Home = () => {
 
-
+    
 //Data hentet fra context
     const { data } = useContext(dataContext);
-    data && console.log("from context:", data.results[0].name);
+    const {checkedPassword}=useContext(dataContext);
+    data && console.log("from context:", data);
+
+    const [lotrname, setLotrname]=useState(null)
+    const [lotrage, setLotrage]=useState(null)
+
+
+    
 
 
 const Homestyling = css`
@@ -39,11 +48,20 @@ return (
     data &&
     
 <div css={Homestyling}>
-    <h1>HAllo</h1>
+    <h1>Hallo</h1>
 
-    <ul>{ data.results.map (planet => <li css={liststyle}>{ planet.name }</li>)}</ul>
+    <ul>{ data.docs.map (character => <div><li css={liststyle}>{ character.name}  { character.gender}</li></div>)}</ul>
 
     <p>Truttruuut</p>
+
+    <section >
+   
+   {checkedPassword ? <Logoutbutton /> : <Loginbutton />}
+  
+   
+          
+       
+       </section>
 
     </div>
   
