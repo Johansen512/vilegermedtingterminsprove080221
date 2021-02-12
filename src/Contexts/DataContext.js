@@ -10,6 +10,7 @@ const DataContextProvider = (props) => {
     const [checkedEmail,setCheckedEmail]=useState(null)
     const [checkedPassword,setCheckedPassword]=useState(null)
     const [byemessage, setByemessage]=useState(null)
+    const [token, setToken]=useState(null)
 
 
 
@@ -22,6 +23,7 @@ const DataContextProvider = (props) => {
         
         setCheckedEmail(storedEmail);
         setCheckedPassword(storedPassword);
+        setToken('fz0iWXirFJgLJUvlelqb')
 
       data && console.log ("from local:", checkedEmail, checkedPassword );
 
@@ -30,34 +32,28 @@ const DataContextProvider = (props) => {
     
       }, [data, checkedEmail, checkedPassword, setCheckedEmail, setCheckedPassword, byemessage, setByemessage]);
 
-      useEffect (() => {fetch("https://the-one-api.dev/v2/character?limit=10", {
+      
+
+      useEffect (() => {
+          
+        token &&
+        fetch("https://the-one-api.dev/v2/character?limit=10", {
 Method: "GET",
-headers: { "Authorization": "Bearer fz0iWXirFJgLJUvlelqb" }
+headers: { "Authorization": "Bearer " + token }
 
       })
       .then (response => response.json())
       .then (result => setData(result)) 
       
-          }, []);
+          }, [token]);
               
           
           
           data && console.log(data.docs)
 
-      //checker om der er logget ind-->
-
-    useEffect (() => {
-checkedPassword ? navigate("/") : navigate("/Loginform")
-
-/*fetch("https://swapi.dev/api/planets/")
-.then (response => response.json())
-.then (result => setData(result)) */
+      //checker om der er logget ind, hvis der er logget ind, gå til forside. Hvis der ikke er logget, så gå til Loginform-->
 
 
-
-
-
-        }); 
 
 
 

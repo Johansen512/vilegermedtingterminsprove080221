@@ -44,8 +44,8 @@ font-weight: bold;
 //Herunder mapper vi hen over data.results (som er hver planet )
 //trækker variablen planet ud og skriver f.eks. planetens navn eller tyngdekraft ud
 
-return (
-    data &&
+return  data && (
+   
     
 <div css={Homestyling}>
     <h1>Hallo</h1>
